@@ -94,9 +94,9 @@ export default function ListingSidebar2() {
               </h4>
             </div>
             <div id="collapse02" className="collapse show" aria-labelledby="heading0" data-parent="#accordionExample">
-              <div className="row card-body px-0 pt-0">
+              <div className="grid card-body card-body px-0 pt-0">
                 {["3+", "5+", "10+", "20+", "50+", "100+"].map((item, i) => (
-                  <FormCheck key={i} className="col-6" type="checkbox" id={`comment-${i}`} checked={selectedCategories.includes(item.title)}>
+                  <FormCheck key={i} type="checkbox" id={`comment-${i}`} checked={selectedCategories.includes(item.title)}>
                     <FormCheck.Input role="button" type="checkbox" />
                     <FormCheck.Label role="button">
                       <span> {item}</span>
@@ -124,13 +124,7 @@ export default function ListingSidebar2() {
             <div id="collapse03" className="collapse show" aria-labelledby="heading0" data-parent="#accordionExample">
               <div className="grid card-body card-body px-0 pt-0">
                 {filterScores.map((item, i) => (
-                  <FormCheck
-                    key={i}
-                    className="col-12 col-xxl-6"
-                    type="checkbox"
-                    id={`score-${i}`}
-                    checked={selectedCategories.includes(item.title)}
-                  >
+                  <FormCheck key={i} type="checkbox" id={`score-${i}`} checked={selectedCategories.includes(item.title)}>
                     <FormCheck.Input role="button" type="checkbox" />
                     <FormCheck.Label role="button">
                       <span>
