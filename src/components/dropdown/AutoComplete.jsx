@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button, FormControl, ListGroup } from "react-bootstrap";
+import { Button, FormControl, FormGroup, FormLabel, InputGroup, ListGroup } from "react-bootstrap";
+import { CSSTransition } from "react-transition-group";
+import { PiCaretDown, PiCheckBold } from "react-icons/pi";
+import "../../styles/AutocompleteInput.css";
+import InputGroupText from "react-bootstrap/esm/InputGroupText";
 
 const AutocompleteInput = ({
   disabled = false,
@@ -68,38 +72,55 @@ const AutocompleteInput = ({
 
   return (
     <div className="autocomplete-wrapper position-relative">
-      <h5 className="text-start fs-6">{label}</h5>
-      <FormControl
-        role="combobox"
-        type="text"
-        className="autocomplete-input bg-light"
-        style={{
-          opacity: disabled ? 0.5 : 1,
-          cursor: disabled ? "not-allowed" : "text",
-        }}
-        disabled={disabled}
-        ref={inputRef}
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder={placeholder}
-        onFocus={() => setShowSuggestions(true)}
-      />
-      {showSuggestions && (
+      <FormGroup>
+        {label && (
+          <FormLabel>
+            <h5 className="text-start fs-6">{label}</h5>
+          </FormLabel>
+        )}
+        <InputGroup>
+          <FormControl
+            role="combobox"
+            type="text"
+            className="autocomplete-input bg-light border-0 outline-none"
+            style={{
+              opacity: disabled ? 0.5 : 1,
+              cursor: disabled ? "not-allowed" : "text",
+            }}
+            disabled={disabled}
+            ref={inputRef}
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder={placeholder}
+            onFocus={() => setShowSuggestions(true)}
+          />
+          <InputGroupText>
+            <PiCaretDown
+              style={{
+                transition: "transform 0.3s",
+                transform: showSuggestions ? "rotate(180deg)" : "rotate(0deg)",
+              }}
+            />
+          </InputGroupText>
+        </InputGroup>
+      </FormGroup>
+      <CSSTransition in={showSuggestions} timeout={300} classNames="dropdown" unmountOnExit>
         <ListGroup className="autocomplete-dropdown z-3 position-absolute top-100 start-0 w-100">
           {filteredSuggestions.length > 0 ? (
             filteredSuggestions.map((suggestion, index) => (
               <ListGroup.Item
                 key={index}
-                style={{ order: suggestion.key === selected ? -1 : index }}
-                className="cursor-pointer"
+                aria-selected={suggestion.key === selected}
+                className="autocomplete-item"
                 disabled={suggestion.key === selected}
                 onClick={() => handleSuggestionClick(suggestion)}
               >
                 <Button
-                  className={`w-100 text-start ${suggestion.key === selected ? "text-primary" : ""}`}
-                  variant={suggestion.key === selected ? "light" : "outline-light"}
+                  variant="ghost"
+                  className={`autocomplete-item-button w-100 d-flex align-items-center justify-content-between text-start`}
                 >
                   {suggestion.label}
+                  {suggestion.key === selected && <PiCheckBold />}
                 </Button>
               </ListGroup.Item>
             ))
@@ -107,7 +128,7 @@ const AutocompleteInput = ({
             <ListGroup.Item>{emptyMessage}</ListGroup.Item>
           )}
         </ListGroup>
-      )}
+      </CSSTransition>
     </div>
   );
 };

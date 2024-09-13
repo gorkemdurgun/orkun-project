@@ -9,8 +9,6 @@ export const metadata = {
 export default function page() {
   return (
     <>
-    
-   
       <Breadcumb9 />
       <Listing8 />
     </>

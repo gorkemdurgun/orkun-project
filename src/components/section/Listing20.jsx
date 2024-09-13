@@ -98,7 +98,6 @@ export default function Listing20() {
       <section className="pt30 pb90">
         <div className="container">
           <ListingSideber7 />
-
           <div className="row">
             <div className="row">{content}</div>
             <div className="mt30">

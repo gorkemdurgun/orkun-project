@@ -648,6 +648,8 @@ export const project1 = [
     projectType: "Hourly",
     skills: "Adobe Photoshop",
     sort: "best-seller",
+    city: "izmir",
+    district: "bornova",
   },
   {
     id: 2,
@@ -665,6 +667,8 @@ export const project1 = [
     projectType: "Fixed",
     skills: "Figma",
     sort: "recommended",
+    city: "balikesir",
+    district: "ayvalik",
   },
   {
     id: 3,
@@ -682,6 +686,8 @@ export const project1 = [
     projectType: "Hourly",
     skills: "Sketch",
     sort: "new-arrivals",
+    city: "istanbul",
+    district: "pendik",
   },
   {
     id: 4,

@@ -29,14 +29,13 @@ export default function ListingSidebar2() {
           <div className="card-body px-0 pt-0">
             <div className="mb-3">
               <AutocompleteInput
-                label={"İl"}
+                // label={"İl"}
                 placeholder="İl seçiniz"
                 emptyMessage="İl bulunamadı"
                 options={cityOptions}
                 value={selectedCity}
                 onChangeKey={(selectedKey) => {
                   setSelectedCity(selectedKey);
-                  console.log(selectedKey);
                   setSelectedDistrict("");
                 }}
               />
@@ -44,7 +43,7 @@ export default function ListingSidebar2() {
             <div className="mb-3">
               <AutocompleteInput
                 disabled={!selectedCity}
-                label={"İlçe"}
+                // label={"İlçe"}
                 placeholder="İlçe seçiniz"
                 emptyMessage="İlçe bulunamadı"
                 options={districtOptions}
@@ -63,7 +62,7 @@ export default function ListingSidebar2() {
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapse1"
-                  aria-expanded="false"
+                  aria-expanded="true"
                   aria-controls="collapse1"
                 >
                   Ücret Aralığı
@@ -74,7 +73,6 @@ export default function ListingSidebar2() {
               <div className="card-body card-body px-0 pt-4">
                 <BudgetOption2
                   onRangeChange={(value) => {
-                    console.log(value);
                     setSelectedPriceRange(value);
                   }}
                 />
@@ -122,20 +120,6 @@ export default function ListingSidebar2() {
           </div>
         </div>
         {/* <ClearButton /> */}
-        <Button
-          variant="primary"
-          className="w-100 text-white"
-          onClick={() => {
-            console.log({
-              selectedCity,
-              selectedDistrict,
-              selectedPriceRange,
-              selectedCategories,
-            });
-          }}
-        >
-          Filtrele
-        </Button>
       </div>
     </>
   );

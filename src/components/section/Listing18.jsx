@@ -21,56 +21,31 @@ export default function Listing18() {
   const getEnglishLevel = listingStore((state) => state.getEnglishLevel);
 
   // category filter
-  const categoryFilter = (item) =>
-    getCategory?.length !== 0 ? getCategory.includes(item.category) : item;
+  const categoryFilter = (item) => (getCategory?.length !== 0 ? getCategory.includes(item.category) : item);
 
   // project-type filter
-  const projectTypeFilter = (item) =>
-    getProjectType?.length !== 0
-      ? getProjectType.includes(item.projectType)
-      : item;
+  const projectTypeFilter = (item) => (getProjectType?.length !== 0 ? getProjectType.includes(item.projectType) : item);
 
   // price filter
-  const priceFilter = (item) =>
-    getPrice.min <= item.price.min && getPrice.max >= item.price.max;
+  const priceFilter = (item) => getPrice.min <= item.price.min && getPrice.max >= item.price.max;
 
   // skill filter
-  const skillFilter = (item) =>
-    getDesginTool?.length !== 0
-      ? getDesginTool.includes(item.skills.split(" ").join("-").toLowerCase())
-      : item;
+  const skillFilter = (item) => (getDesginTool?.length !== 0 ? getDesginTool.includes(item.skills.split(" ").join("-").toLowerCase()) : item);
 
   // location filter
-  const locationFilter = (item) =>
-    getLocation?.length !== 0
-      ? getLocation.includes(item.location.split(" ").join("-").toLowerCase())
-      : item;
+  const locationFilter = (item) => (getLocation?.length !== 0 ? getLocation.includes(item.location.split(" ").join("-").toLowerCase()) : item);
 
   // location filter
-  const searchFilter = (item) =>
-    getSearch !== ""
-      ? item.location
-          .split("-")
-          .join(" ")
-          .toLowerCase()
-          .includes(getSearch.toLowerCase())
-      : item;
+  const searchFilter = (item) => (getSearch !== "" ? item.location.split("-").join(" ").toLowerCase().includes(getSearch.toLowerCase()) : item);
 
   // speak filter
-  const speakFilter = (item) =>
-    getSpeak?.length !== 0
-      ? getSpeak.includes(item.language.split(" ").join("-").toLowerCase())
-      : item;
+  const speakFilter = (item) => (getSpeak?.length !== 0 ? getSpeak.includes(item.language.split(" ").join("-").toLowerCase()) : item);
 
   // english level filter
-  const englishLevelFilter = (item) =>
-    getEnglishLevel?.length !== 0
-      ? getEnglishLevel.includes(item.englishLevel)
-      : item;
+  const englishLevelFilter = (item) => (getEnglishLevel?.length !== 0 ? getEnglishLevel.includes(item.englishLevel) : item);
 
   // sort by filter
-  const sortByFilter = (item) =>
-    getBestSeller === "best-seller" ? item : item.sort === getBestSeller;
+  const sortByFilter = (item) => (getBestSeller === "best-seller" ? item : item.sort === getBestSeller);
 
   // content
   let content = project1
@@ -84,8 +59,8 @@ export default function Listing18() {
     .filter(speakFilter)
     .filter(englishLevelFilter)
     .filter(sortByFilter)
-    .map((item,i) => (
-      <div key={ i } className="col-md-6 col-xl-4">
+    .map((item, i) => (
+      <div key={i} className="col-md-6 col-xl-4">
         <ProjectCard2 data={item} />
       </div>
     ));

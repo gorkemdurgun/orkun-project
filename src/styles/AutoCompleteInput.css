@@ -1,0 +1,30 @@
+/* AutocompleteInput.css */
+.autocomplete-item {
+  cursor: pointer;
+  &:hover {
+    background-color: #f9f9f9;
+  }
+  &:focus {
+    background-color: #f9f9f9;
+  }
+}
+
+.dropdown-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.dropdown-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.dropdown-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.dropdown-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
