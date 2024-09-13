@@ -1,7 +1,0 @@
-{
-  "/(home)/page": "app/(home)/page.js",
-  "/(project)/project-1/page": "app/(project)/project-1/page.js",
-  "/(dashboard)/profilim/page": "app/(dashboard)/profilim/page.js",
-  "/(service)/service-1/page": "app/(service)/service-1/page.js",
-  "/[...not_found]/page": "app/[...not_found]/page.js"
-}
