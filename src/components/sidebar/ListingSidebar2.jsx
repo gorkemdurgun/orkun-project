@@ -55,50 +55,6 @@ export default function ListingSidebar2() {
           </div>
         </div>
         <div className="accordion" id="accordionExample">
-          <div className="card mb20 pb10 mt-0">
-            <div className="card-header" id="heading0">
-              <h4>
-                <button
-                  className="btn btn-link ps-0 pt-0 collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse0"
-                  aria-expanded="false"
-                  aria-controls="collapse0"
-                >
-                  Kategori
-                </button>
-              </h4>
-            </div>
-            <div id="collapse0" className="collapse show" aria-labelledby="heading0" data-parent="#accordionExample">
-              <div className="row px-3 pt-0 bg-red">
-                {filterCategories.slice(0, showMore ? filterCategories.length : 10).map((item, i) => (
-                  <FormCheck
-                    key={i}
-                    className="col-12 col-xxl-6"
-                    type="checkbox"
-                    id={`category-${i}`}
-                    checked={selectedCategories.includes(item.title)}
-                  >
-                    <FormCheck.Input
-                      role="button"
-                      type="checkbox"
-                      onChange={({ target: { checked } }) => {
-                        console.log(item.title);
-                        setSelectedCategories((selectedCategories) =>
-                          checked ? [...selectedCategories, item.title] : selectedCategories.filter((category) => category !== item.title)
-                        );
-                      }}
-                    />
-                    <FormCheck.Label role="button">{item.title}</FormCheck.Label>
-                  </FormCheck>
-                ))}
-              </div>
-              <Button variant="link" className="p-0 fs-6 text-primary text-start" onClick={() => setShowMore(!showMore)}>
-                {!showMore ? `Daha fazla göster (${filterCategories.length - 10})` : `Daha az göster`}
-              </Button>
-            </div>
-          </div>
           <div className="card mb20 pb0">
             <div className="card-header" id="heading1">
               <h4>
