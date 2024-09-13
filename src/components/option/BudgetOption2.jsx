@@ -2,31 +2,24 @@
 
 import ReactSlider from "react-slider";
 import { useEffect, useState } from "react";
-import priceStore from "@/store/priceStore";
 
-export default function BudgetOption2() {
-  const setPriceRange = priceStore((state) => state.priceRangeHandler);
-  const priceRange = priceStore((state) => state.priceRange);
+/*
+type Props = {
+  priceRange: {
+    min: number,
+    max: number,
+  },
+  setPriceRange: (priceRange: { min: number, max: number }) => void,
+  onRangeChange: (value: number[]) => void,
+};
+*/
 
-  const [getPrice, setPrice] = useState(priceRange);
-
-  useEffect(() => {
-    setPriceRange(getPrice.min, getPrice.max);
-  }, [getPrice.min, getPrice.max, setPriceRange]);
-
-  useEffect(() => {
-    setPrice({
-      min: priceRange.min,
-      max: priceRange.max,
-    });
-  }, [priceRange.min, priceRange.max, setPrice]);
-
-  const priceHandler = (data) => {
-    setPrice({
-      min: data[0],
-      max: data[1],
-    });
-  };
+export default function BudgetOption2({ priceRange = { min: 0, max: 1000 }, onRangeChange = (value) => {} }) {
+  const { min = 0, max = 1000 } = priceRange;
+  const [price, setPrice] = useState({
+    min: min,
+    max: max,
+  });
 
   return (
     <>
@@ -38,10 +31,18 @@ export default function BudgetOption2() {
                 className="horizontal-slider"
                 thumbClassName="example-thumb"
                 trackClassName="example-track"
-                value={[getPrice.min, getPrice.max]}
+                value={[price.min, price.max]}
                 min={0}
                 max={100000}
-                onChange={priceHandler}
+                onChange={(value) => {
+                  setPrice({
+                    min: value[0],
+                    max: value[1],
+                  });
+                }}
+                onAfterChange={(value) => {
+                  onRangeChange(value);
+                }}
                 minDistance={10}
               />
             </div>
@@ -51,10 +52,10 @@ export default function BudgetOption2() {
                 className="amount w-100"
                 placeholder="$20"
                 min={0}
-                value={getPrice.min}
+                value={price.min}
                 onChange={(e) =>
                   setPrice({
-                    ...getPrice,
+                    ...price,
                     min: e.target.value,
                   })
                 }
@@ -66,10 +67,10 @@ export default function BudgetOption2() {
                 placeholder="$100000"
                 min={0}
                 max={100000}
-                value={getPrice.max}
+                value={price.max}
                 onChange={(e) =>
                   setPrice({
-                    ...getPrice,
+                    ...price,
                     max: e.target.value,
                   })
                 }

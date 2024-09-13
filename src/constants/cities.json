@@ -2280,64 +2280,7 @@
       }
     ]
   },
-  {
-    "key": "izmir",
-    "label": "İzmir",
-    "districts": [
-      {
-        "key": "merkez",
-        "label": "Merkez"
-      },
-      {
-        "key": "buca",
-        "label": "Buca"
-      },
-      {
-        "key": "çeşme",
-        "label": "Çeşme"
-      },
-      {
-        "key": "dikili",
-        "label": "Dikili"
-      },
-      {
-        "key": "foça",
-        "label": "Foça"
-      },
-      {
-        "key": "gaziemir",
-        "label": "Gaziemir"
-      },
-      {
-        "key": "güzelbahçe",
-        "label": "Güzelbahçe"
-      },
-      {
-        "key": "karabağlar",
-        "label": "Karabağlar"
-      },
-      {
-        "key": "karşıyaka",
-        "label": "Karşıyaka"
-      },
-      {
-        "key": "menemen",
-        "label": "Menemen"
-      },
-      {
-        "key": "seferihisar",
-        "label": "Seferihisar"
-      },
-      {
-        "key": "torbalı",
-        "label": "Torbalı"
-      },
-      {
-        "key": "urla",
-        "label": "Urla"
-      }
-    ]
-  },
+
   {
     "key": "kahramanmaras",
     "label": "Kahramanmaraş",
