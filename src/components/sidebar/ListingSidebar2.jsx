@@ -21,12 +21,11 @@ export default function ListingSidebar2() {
   return (
     <>
       <div className="list-sidebar-style1 d-none d-lg-block">
-        <div className="card mb20 p-3 rounded-3">
+        <div className="card mb20 rounded-3">
           <div>
             <h4>Adres</h4>
-            <hr />
           </div>
-          <div className="card-body px-0 pt-0">
+          <div className="card-body px-0 pt-2">
             <div className="mb-3">
               <AutocompleteInput
                 // label={"İl"}
@@ -54,11 +53,11 @@ export default function ListingSidebar2() {
           </div>
         </div>
         <div className="accordion" id="accordionExample">
-          <div className="card mb20 pb0">
+          <div className="card mb20 pb0 ">
             <div className="card-header" id="heading1">
               <h4>
                 <button
-                  className="btn btn-link ps-0 collapsed"
+                  className="btn btn-link ps-0 collapsed "
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapse1"
@@ -69,7 +68,7 @@ export default function ListingSidebar2() {
                 </button>
               </h4>
             </div>
-            <div id="collapse1" className="collapse " aria-labelledby="heading1" data-parent="#accordionExample">
+            <div id="collapse1" className="collapse show" aria-labelledby="heading1" data-parent="#accordionExample">
               <div className="card-body card-body px-0 pt-4">
                 <BudgetOption2
                   onRangeChange={(value) => {
@@ -87,14 +86,42 @@ export default function ListingSidebar2() {
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapse02"
-                  aria-expanded="false"
+                  aria-expanded="true"
                   aria-controls="collapse02"
+                >
+                  Yorum Sayısı
+                </button>
+              </h4>
+            </div>
+            <div id="collapse02" className="collapse show" aria-labelledby="heading0" data-parent="#accordionExample">
+              <div className="row card-body px-0 pt-0">
+                {["3+", "5+", "10+", "20+", "50+", "100+"].map((item, i) => (
+                  <FormCheck key={i} className="col-6" type="checkbox" id={`score-${i}`} checked={selectedCategories.includes(item.title)}>
+                    <FormCheck.Input role="button" type="checkbox" />
+                    <FormCheck.Label role="button">
+                      <span> {item}</span>
+                    </FormCheck.Label>
+                  </FormCheck>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="card mb20 pb10">
+            <div className="card-header" id="heading0">
+              <h4>
+                <button
+                  className="btn btn-link ps-0 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapse03"
+                  aria-expanded="true"
+                  aria-controls="collapse03"
                 >
                   Puan
                 </button>
               </h4>
             </div>
-            <div id="collapse02" className="collapse " aria-labelledby="heading0" data-parent="#accordionExample">
+            <div id="collapse03" className="collapse show" aria-labelledby="heading0" data-parent="#accordionExample">
               <div className="grid card-body card-body px-0 pt-0">
                 {filterScores.map((item, i) => (
                   <FormCheck

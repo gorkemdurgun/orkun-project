@@ -33,7 +33,7 @@ export default function BudgetOption2({ priceRange = { min: 0, max: 1000 }, onRa
                 trackClassName="example-track"
                 value={[price.min, price.max]}
                 min={0}
-                max={100000}
+                max={1000}
                 onChange={(value) => {
                   setPrice({
                     min: value[0],
